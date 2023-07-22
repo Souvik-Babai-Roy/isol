@@ -1,0 +1,683 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/title_logo.ico" type="image/ico" />
+    <%--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">--%>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:100,300,400,700,900&display=swap">
+    <link href="Styles/adminlte.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/tempusdominus-bootstrap-4.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/fontawesome-free/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/icheck-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/jqvmap.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/OverlayScrollbars.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .text-blue, .hover-text-blue:hover
+        {
+            color: #2196F3 !important;
+            opacity: 1;
+        }
+        
+        .text-label
+        {
+            color: #0000FF !important;
+        }
+        .mydemo
+        {
+            color: Green;
+        }
+        
+        
+        .text-uppercase
+        {
+            text-transform: uppercase;
+        }
+        .sticky
+        {
+            position: sticky;
+        }
+        
+        .navbar-fixed-top.cbp-af-header-shrink
+        {
+            padding: 10px 0;
+        }
+        
+        .layout-fixed
+        {
+            position: fixed;
+        }
+        .nav-indent
+        {
+            text-indent: 25px;
+        }
+        
+        .mynav
+        {
+            overflow: hidden;
+            background-color: white;
+            opacity: 80%;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 5px 15px;
+            height: 50px;
+        }
+        
+        .mynav:hover
+        {
+            opacity: 100%;
+        }
+        
+        
+        .mynav a
+        {
+            float: left;
+            color: indigo;
+            text-align: center;
+            padding: 5px 15px;
+            font-size: 15px;
+        }
+        
+        .mynav a:hover
+        {
+            background: #B565A7;
+            color: white;
+            font-weight: bold;
+            opacity: 100%;
+            text-decoration: underline;
+        }
+        .menu
+        {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .menu__link
+        {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .menu__item
+        {
+            flex: 1;
+        }
+        
+        ::placeholder
+        {
+            color: #2196F3 !important;
+            opacity: 0.3; /* Firefox */
+        }
+        
+        :-ms-input-placeholder
+        {
+            /* Internet Explorer 10-11 */
+            color: #2196F3 !important;
+        }
+        
+        ::-ms-input-placeholder
+        {
+            /* Microsoft Edge */
+            color: #2196F3 !important;
+        }
+        
+        .background
+        {
+            position: absolute;
+            z-index: 0;
+            background: white;
+            display: block;
+            min-height: 50%;
+            min-width: 50%;
+            z-index: -1;
+        }
+        
+        .bg-text
+        {
+            color: lightgrey;
+            font-size: 120px;
+            transform: rotate(300deg);
+            -webkit-transform: rotate(300deg);
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <!-- Preloader -->
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="img/loading.gif" alt="AdminLTELogo" height="120"
+                width="200" />
+        </div>
+        <div class="hold-transition sidebar-mini layout-navbar-fixed">
+            <div class="wrapper">
+                <!-- Navbar -->
+                <div>
+                    <nav class="main-header navbar navbar-expand navbar-white">
+              <!-- Left navbar links -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link text-lg" data-widget="pushmenu" href="#" role="button"><i class="fas fa-maximize" onclick="myFunction(this)"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                <label id="lbldate" runat="server"></label>
+                </li>
+
+              </ul>
+
+              <!-- Right navbar links -->
+              <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                  <a>
+                    <asp:Label ID="lblcmnpame" runat="server" Text="" Font-Bold="True" Font-Italic="True"></asp:Label>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+                </div>
+                <!-- /.navbar -->
+                <!-- Main Sidebar Container -->
+                <div class="main-sidebar  sidebar-light-blue elevation-4">
+                    <!-- Brand Logo -->
+                    <asp:HyperLink ID="HyperLink1" runat="server" class="brand-link"><img src="img/letterhead.jpg" alt="Logo" class="text-center" style="opacity: 1; height: auto;
+                            width: 90%;"></asp:HyperLink>
+                    <%--<a href="#dashboard" >
+                        
+                    </a>--%>
+                    <!-- Sidebar -->
+                    <div class="sidebar layout-fixed">
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <div class="image text-black">
+                            </div>
+                            <div>
+                                <a class="d-block">
+                                    <br />
+                                </a>
+                            </div>
+                            <br />
+                        </div>
+                        <!-- Sidebar user panel (optional) -->
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <div class="image text-black">
+                                Welcome &nbsp;
+                            </div>
+                            <div>
+                                <a class="d-block " href="About_Me.aspx">
+                                    <asp:Label ID="lbluname" runat="server" Text="" Font-Bold="true"></asp:Label>
+                                </a>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <asp:LinkButton ID="btnlogout" runat="server" class="text-bold text-left btn btn-block btn-outline-light text-sm-left"><img src="img/logout.png" alt="logout" />Logout</asp:LinkButton>
+                            <ajaxToolkit:ConfirmButtonExtender ID="ConfirmButtonExtender2" runat="server" OnClientCancel="cancelclick"
+                                ConfirmText="Are you sure you want to Logout?" TargetControlID="btnlogout" />
+                        </div>
+                        <!-- Sidebar Menu -->
+                        <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                  data-accordion="false">
+                  <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                  <li class="nav-item" id="lidashboard" runat="server">
+                    <a href="Dashboard.aspx" class="nav-link" id="lidashboard1" runat="server">
+                      <i class="nav-icon fas fa-tachometer-alt"></i>
+                      <p>
+                        Dashboard                        
+                      </p>
+                    </a>
+                  </li>
+                  <li class="nav-item" id="liepgdashboard" runat="server">
+                    <a href="epg_dashboard.aspx" class="nav-link" id="liepgdashboard1" runat="server">
+                      <i class="nav-icon fas fa-tachometer-alt"></i>
+                      <p>
+                       EPG Dashboard                        
+                      </p>
+                    </a>
+                  </li>
+                  
+                  <li class="nav-item" id="limaster" runat="server">
+                    <a class="nav-link" id="limaster1" runat="server">                      
+                      <i class="nav-icon fa-brands fa-galactic-republic"></i>
+                      <p>
+                       Masters
+                        <i class="fas fa-angle-left right"></i>
+                        
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item" id="liepgschedule" runat="server">
+                        <a href="epg_schedule.aspx" class="nav-link nav-indent" id="liepgschedule1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>EPG Schedule</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liepgscheduleref" runat="server">
+                        <a href="epg_schedule_referrence.aspx" class="nav-link nav-indent" id="liepgscheduleref1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>EPG Referrence</p>
+                        </a>
+                      </li>
+                      
+                      <li class="nav-item" id="ligenledger" runat="server">
+                        <a href="General_ledger.aspx" class="nav-link nav-indent" id="ligenledger1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>General Ledger</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liguest" runat="server">
+                        <a href="Guest_ledger.aspx" class="nav-link nav-indent" id="liguest1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Guest</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="licustomer" runat="server">
+                        <a href="Customer_ledger.aspx" class="nav-link nav-indent" id="licustomer1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Customer</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liemployee" runat="server">
+                        <a href="Employee_ledger.aspx" class="nav-link nav-indent" id="liemployee1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Employee</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="listudent" runat="server">
+                        <a href="Student_ledger.aspx" class="nav-link nav-indent" id="listudent1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Student</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liroom" runat="server">
+                        <a href="Room_ledger.aspx" class="nav-link nav-indent" id="liroom1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Room</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="litable" runat="server">
+                        <a href="Table_ledger.aspx" class="nav-link nav-indent" id="litable1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Table</p>
+                        </a>
+                      </li>
+                      
+                      <li class="nav-item" id="lisupplier" runat="server">
+                        <a href="Supplier_ledger.aspx" class="nav-link nav-indent" id="lisupplier1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Supplier</p>
+                        </a>
+                      </li>
+
+                      <li class="nav-item" id="licategory" runat="server">
+                        <a href="Category_master.aspx" class="nav-link nav-indent" id="licategory1" runat="server">
+                          
+                          <p>Product Category</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liproductentry" runat="server">
+                        <a href="Product_entry.aspx" class="nav-link nav-indent" id="liproductentry1" runat="server">
+                          
+                          <p>Products</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liproductfeature" runat="server">
+                        <a href="Product_features.aspx" class="nav-link nav-indent" id="liproductfeature1" runat="server">                          
+                          <p>Product Features</p>
+                        </a>
+                      </li>                      
+                      <li class="nav-item" id="libook" runat="server">
+                        <a href="Books_entry.aspx" class="nav-link nav-indent" id="libook1" runat="server">
+                          
+                          <p>Books</p>
+                        </a>
+                      </li>
+                      <li class="nav-item"  id="lifranchisee" runat="server">
+                        <a href="Franchisee.aspx" class="nav-link nav-indent" id="lifranchisee1" runat="server">
+                          
+                          <p>Franchisee</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="libranch" runat="server">
+                        <a href="Branch.aspx" class="nav-link nav-indent" id="libranch1" runat="server">
+                          
+                          <p>Branch</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liwarehouse" runat="server">
+                        <a href="Warehouse.aspx" class="nav-link nav-indent" id="liwarehouse1" runat="server">
+                          
+                          <p>Warehouse</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="listore" runat="server">
+                        <a href="Store.aspx" class="nav-link nav-indent" id="listore1" runat="server">
+                          
+                          <p>Store</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liquotation" runat="server">
+                        <a href="Quotation.aspx" class="nav-link nav-indent" id="liquotation1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Quotation</p>
+                        </a>
+                      </li>
+                      <%--<li class="nav-item" id="lipurchase" runat="server">
+                        <a href="Puchase_order.aspx" class="nav-link nav-indent" id="lipurchase1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Purchase Order</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="lisales" runat="server">
+                        <a href="Sales_order.aspx" class="nav-link nav-indent" id="lisales1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Sales Order</p>
+                        </a>
+                      </li>--%>
+                      <li class="nav-item" id="liinvoice" runat="server">
+                        <a href="Invoice.aspx" class="nav-link nav-indent" id="liinvoice1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Invoice</p>
+                        </a>
+                      </li>
+                      <li class="nav-item" id="liexpense" runat="server">
+                        <a href="Expense.aspx" class="nav-link nav-indent" id="liexpense1" runat="server">
+                          <i class="nav-icon"></i>
+                          <p>Expense</p>
+                        </a>
+                      </li>
+                      <%--<li class="nav-item">
+                        <a href="Transaction_entry.aspx" class="nav-link nav-indent">
+                          
+                          <p>Transaction Digest</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Transaction_details.aspx" class="nav-link nav-indent">
+                          
+                          <p>Transaction Details</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="User_entry.aspx" class="nav-link nav-indent">
+                          
+                          <p>User Master</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Service_master.aspx" class="nav-link nav-indent">                          
+                          <p>Service Master</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Asset_master.aspx" class="nav-link nav-indent">                          
+                          <p>Assets Master</p>
+                        </a>
+                      </li>
+                       <li class="nav-item">
+                        <a href="Parameters.aspx" class="nav-link nav-indent">                          
+                          <p>Parameters</p>
+                        </a>
+                      </li>--%>
+                    </ul>
+                  </li>
+                  <%--<li class="nav-header"><i class="fas fa-solid fa-hotel"></i>
+                  <b>Hotel Management</b>
+                 
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link">
+                      <i class="nav-icon fas fa-th"></i>
+                      <p>
+                        Front Desk Pages
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="Check_in.aspx" class="nav-link nav-indent">
+                          <p>Check In</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Express_checkin.aspx" class="nav-link nav-indent">                          
+                          <p>Express Check In</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Reservation.aspx" class="nav-link nav-indent">
+                          
+                          <p>Reservation</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Invoice.aspx" class="nav-link nav-indent">
+                          
+                          <p>Billing</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Checkout.aspx" class="nav-link nav-indent">
+                          
+                          <p>Check Out</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link">                      
+                      <i class="nav-icon fas fa-handshake"></i>
+                      <p>
+                       Service Details
+                       <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="Shift_room.aspx" class="nav-link nav-indent">
+                          <p>Shift Room</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Block_room.aspx" class="nav-link nav-indent">
+                          <p>Block Room</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Checkout_extend.aspx" class="nav-link nav-indent">                          
+                          <p>Extend Check Out Date</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Hotel_service.aspx" class="nav-link nav-indent">
+                          
+                          <p>Hotel Services</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Liability_service.aspx" class="nav-link nav-indent">
+                          
+                          <p>Liability Service</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Complaints.aspx" class="nav-link nav-indent">
+                          
+                          <p>Customer Complaints</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                   <li class="nav-header"><i class="fas fa-solid fa-utensils"></i>
+                  <b>Restaurant Management</b>                 
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link">
+                      <i class="nav-icon fas fa-bowl-food"></i>
+                      <p>
+                        Restaurant Desk
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="Table_management.aspx" class="nav-link nav-indent">
+                          <p>Table Allocation</p>
+                        </a>
+                      </li>
+                       <li class="nav-item">
+                        <a href="Orders.aspx" class="nav-link nav-indent">                          
+                          <p>Orders</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Advance_booking.aspx" class="nav-link nav-indent">
+                          
+                          <p>Table Bookings</p>
+                        </a>
+                      </li>
+                       <li class="nav-item">
+                        <a href="Nontable_orders.aspx" class="nav-link nav-indent">
+                          
+                          <p>Delivery/Pickup Orders</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Restaurant_billing.aspx" class="nav-link nav-indent">
+                          
+                          <p>Billing</p>
+                        </a>
+                      </li>
+                     
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link">
+                      <i class="nav-icon fas fa-hands-praying"></i>
+                      <p>
+                        Restaurant Service
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="Shift_table.aspx" class="nav-link nav-indent">
+                          <p>Shift Table</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Liability_billing.aspx" class="nav-link nav-indent">
+                          
+                          <p>Liability Billing</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="Customer_complaints.aspx" class="nav-link nav-indent">
+                          
+                          <p>Customer Complaints</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>                 --%>
+                </ul>
+              </nav>
+                        <!-- /.sidebar-menu -->
+                    </div>
+                    <!-- /.sidebar -->
+                </div>
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper">
+                    <section class="content-header">
+              <div class="container-fluid">
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                   <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label>
+                  </div>
+                 </div>
+              </div>
+              <!-- /.container-fluid -->
+            </section>
+                    <asp:ContentPlaceHolder ID="body" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+                <!-- /.content-wrapper -->
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="mynav menu">
+            <asp:HyperLink ID="HyperLink2" runat="server" class="menu__link menu__item">HOME</asp:HyperLink><a href="" class="menu__link menu__item">
+                LEDGER</a> <a href="" class="menu__link menu__item">REPORT</a> <a href="#" class="menu__link menu__item">
+                    <i class="fas fa-arrow-turn-up"></i></a>
+        </div>
+        <%--<div>
+            <div class="mynav menu">
+                <a href='dashboard.aspx' class="menu__link menu__item">HOME</a> <a href="" class="menu__link menu__item">
+                    LEDGER</a> <a href="" class="menu__link menu__item">REPORT</a> <a href="" class="menu__link menu__item">
+                        INVOICE</a>
+            </div>
+        </div>--%>
+    </div>
+    </form>
+</body>
+<script src="Scripts/myscript/JScript.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript9.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript1.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript10.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript11.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript12.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript13.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript14.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript15.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript2.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript3.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript4.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript5.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript6.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript7.js" type="text/javascript"></script>
+<script src="Scripts/myscript/JScript8.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function cancelclick() {
+        alert("You clicked Cancel!");
+    }
+</script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<script>
+    function myFunction(x) {
+        x.classList.toggle("fa-minimize");
+    }
+</script>
+</html>
